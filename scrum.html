@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Modelo Scrum | Guía Oficial</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Playfair+Display:wght@600;700&amp;family=JetBrains+Mono&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary-fixed": "#dce1ff",
+                        "on-primary": "#ffffff",
+                        "surface-bright": "#f8f9fa",
+                        "on-error": "#ffffff",
+                        "inverse-on-surface": "#f0f1f2",
+                        "surface-container-low": "#f3f4f5",
+                        "secondary": "#555f70",
+                        "on-tertiary-fixed-variant": "#832700",
+                        "on-surface": "#191c1d",
+                        "secondary-fixed-dim": "#bdc7db",
+                        "inverse-surface": "#2e3132",
+                        "on-secondary": "#ffffff",
+                        "on-secondary-fixed-variant": "#3d4757",
+                        "tertiary-container": "#a73400",
+                        "on-error-container": "#93000a",
+                        "secondary-fixed": "#d9e3f7",
+                        "tertiary-fixed-dim": "#ffb59c",
+                        "surface-container": "#edeeef",
+                        "on-background": "#191c1d",
+                        "surface-variant": "#e1e3e4",
+                        "outline": "#747686",
+                        "on-tertiary-fixed": "#390c00",
+                        "error": "#ba1a1a",
+                        "surface": "#f8f9fa",
+                        "primary": "#0037b0",
+                        "surface-container-high": "#e7e8e9",
+                        "on-tertiary": "#ffffff",
+                        "background": "#f8f9fa",
+                        "primary-container": "#1d4ed8",
+                        "error-container": "#ffdad6",
+                        "primary-fixed-dim": "#b7c4ff",
+                        "on-secondary-fixed": "#121c2a",
+                        "surface-container-lowest": "#ffffff",
+                        "on-primary-fixed": "#001551",
+                        "on-tertiary-container": "#ffc9b7",
+                        "surface-dim": "#d9dadb",
+                        "on-primary-fixed-variant": "#0039b5",
+                        "outline-variant": "#c4c5d7",
+                        "inverse-primary": "#b7c4ff",
+                        "secondary-container": "#d6e0f4",
+                        "surface-tint": "#2151da",
+                        "surface-container-highest": "#e1e3e4",
+                        "on-surface-variant": "#434655",
+                        "tertiary": "#7f2500",
+                        "on-primary-container": "#cad3ff",
+                        "tertiary-fixed": "#ffdbcf",
+                        "on-secondary-container": "#596374"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "container-max-width": "1200px",
+                        "section-gap": "64px",
+                        "gutter": "24px",
+                        "unit": "8px",
+                        "margin-mobile": "16px",
+                        "content-max-width": "800px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Playfair Display"],
+                        "body-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "code-sm": ["JetBrains Mono"],
+                        "headline-lg-mobile": ["Playfair Display"],
+                        "label-md": ["Inter"],
+                        "display": ["Playfair Display"],
+                        "headline-lg": ["Playfair Display"],
+                        "headline-sm": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["24px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "body-lg": ["18px", {"lineHeight": "1.7", "fontWeight": "400"}],
+                        "code-sm": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "headline-lg-mobile": ["28px", {"lineHeight": "1.3", "fontWeight": "700"}],
+                        "label-md": ["14px", {"lineHeight": "1.4", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                        "display": ["48px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "headline-lg": ["36px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "headline-sm": ["18px", {"lineHeight": "1.5", "letterSpacing": "0.01em", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        @media print {
+            .no-print { display: none !important; }
+            .print-full-width { width: 100% !important; max-width: 100% !important; }
+        }
+        .scroll-mt-20 { scroll-margin-top: 5rem; }
+        .terminology-tag:hover .copy-icon { opacity: 1; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md selection:bg-primary-fixed selection:text-on-primary-fixed">
+
+<header class="bg-surface dark:bg-on-background border-b border-outline-variant dark:border-outline fixed top-0 w-full z-50 no-print">
+<div class="flex justify-between items-center w-full px-gutter max-w-container-max-width mx-auto h-16">
+<div class="flex items-center gap-6">
+<span class="text-headline-sm font-headline-sm font-bold text-on-surface dark:text-on-primary-fixed">Modelo Scrum</span>
+<nav class="hidden md:flex gap-6 items-center">
+<a class="text-on-surface-variant dark:text-surface-variant font-medium hover:text-primary-container dark:hover:text-primary-fixed-dim transition-colors font-label-md text-label-md" href="#">GitHub</a>
+<a class="text-on-surface-variant dark:text-surface-variant font-medium hover:text-primary-container dark:hover:text-primary-fixed-dim transition-colors font-label-md text-label-md" href="#">Contribuir</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-primary dark:text-primary-fixed">menu_book</button>
+</div>
+</div>
+</header>
+
+<div class="max-w-container-max-width mx-auto flex gap-gutter pt-16 min-h-screen">
+
+<aside class="hidden lg:block sticky top-16 h-[calc(100vh-64px)] w-64 overflow-y-auto border-r border-outline-variant dark:border-outline no-print py-8 pr-4">
+<div class="mb-6 px-4">
+<h3 class="text-label-md font-label-md text-primary font-bold uppercase tracking-wider mb-2">Contenido</h3>
+<p class="text-body-md font-body-md text-on-surface-variant">Guía Oficial de Scrum</p>
+</div>
+<nav class="flex flex-col">
+<a class="nav-item font-bold text-primary dark:text-primary-fixed border-l-4 border-primary dark:border-primary-fixed pl-3 bg-surface-container-low dark:bg-surface-container-high py-2 transition-all duration-200" href="#que-es">¿Qué es Scrum?</a>
+<a class="nav-item text-on-surface-variant dark:text-surface-variant pl-4 py-2 flex items-center gap-3 hover:bg-surface-container-high dark:hover:bg-surface-variant transition-colors" href="#teoria">Teoría</a>
+<a class="nav-item text-on-surface-variant dark:text-surface-variant pl-4 py-2 flex items-center gap-3 hover:bg-surface-container-high dark:hover:bg-surface-variant transition-colors" href="#valores">Valores</a>
+<a class="nav-item text-on-surface-variant dark:text-surface-variant pl-4 py-2 flex items-center gap-3 hover:bg-surface-container-high dark:hover:bg-surface-variant transition-colors" href="#equipo">El Equipo</a>
+<a class="nav-item text-on-surface-variant dark:text-surface-variant pl-4 py-2 flex items-center gap-3 hover:bg-surface-container-high dark:hover:bg-surface-variant transition-colors" href="#eventos">Eventos</a>
+<a class="nav-item text-on-surface-variant dark:text-surface-variant pl-4 py-2 flex items-center gap-3 hover:bg-surface-container-high dark:hover:bg-surface-variant transition-colors" href="#artefactos">Artefactos</a>
+<a class="nav-item text-on-surface-variant dark:text-surface-variant pl-4 py-2 flex items-center gap-3 hover:bg-surface-container-high dark:hover:bg-surface-variant transition-colors" href="#cambios">Cambios 2020</a>
+</nav>
+</aside>
+<!-- Content Canvas (Center) -->
+<main class="flex-1 w-full max-w-[860px] px-margin-mobile md:px-0 py-12 print-full-width">
+<!-- Breadcrumbs -->
+<nav class="flex text-label-md font-label-md text-on-surface-variant mb-8 no-print">
+<a class="hover:text-primary" href="#">Inicio</a>
+<span class="mx-2">/</span>
+<a class="hover:text-primary" href="#">Metodologías</a>
+<span class="mx-2">/</span>
+<span class="text-on-surface">Scrum</span>
+</nav>
+<article class="prose max-w-none prose-slate">
+<header class="mb-12 border-b border-outline-variant pb-8">
+<h1 class="font-display text-display text-on-surface mb-6">Modelo Scrum</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant leading-relaxed">Marco de trabajo liviano que ayuda a personas, equipos y organizaciones a generar valor a través de soluciones adaptativas para problemas complejos.</p>
+<div class="info-box bg-secondary-container/30 border-l-4 border-primary p-6 my-8 rounded-r-lg">
+<div class="flex items-center gap-3 mb-2 text-primary">
+<span class="material-symbols-outlined">info</span>
+<span class="font-bold font-label-md uppercase">Ficha Técnica</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4 font-body-md">
+<p><strong>Versión actual:</strong> Noviembre 2020</p>
+<p><strong>Autores:</strong> Ken Schwaber &amp; Jeff Sutherland</p>
+<p class="md:col-span-2"><strong>Licencia:</strong> Creative Commons Attribution Share-Alike</p>
+</div>
+</div>
+</header>
+<section class="scroll-mt-20 mb-16" id="que-es">
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-6">¿Qué es Scrum?</h2>
+<p class="font-body-md text-body-md mb-6">Scrum es un marco de trabajo liviano que ayuda a las personas, equipos y organizaciones a generar valor a través de soluciones adaptativas para problemas complejos.</p>
+<p class="font-body-md text-body-md mb-4 italic text-on-surface-variant">Scrum requiere un Scrum Master para fomentar un entorno donde:</p>
+<div class="grid gap-4 mt-8">
+<div class="p-6 bg-surface-container-low border border-outline-variant rounded-xl flex gap-6">
+<span class="text-primary font-display text-3xl opacity-30">01</span>
+<div>
+<p class="font-body-md"><span class="font-bold text-primary">Product Owner</span> ordena el trabajo de un problema complejo en un <span class="font-code-sm text-code-sm bg-surface-variant px-2 py-0.5 rounded">Product Backlog</span>.</p>
+</div>
+</div>
+<div class="p-6 bg-surface-container-low border border-outline-variant rounded-xl flex gap-6">
+<span class="text-primary font-display text-3xl opacity-30">02</span>
+<div>
+<p class="font-body-md">El <span class="font-bold text-primary">Scrum Team</span> convierte una selección del trabajo en un <span class="font-bold">Increment</span> de valor durante un <span class="font-code-sm text-code-sm bg-surface-variant px-2 py-0.5 rounded">Sprint</span>.</p>
+</div>
+</div>
+<div class="p-6 bg-surface-container-low border border-outline-variant rounded-xl flex gap-6">
+<span class="text-primary font-display text-3xl opacity-30">03</span>
+<div>
+<p class="font-body-md">El Scrum Team y sus interesados inspeccionan los resultados y se adaptan para el próximo Sprint.</p>
+</div>
+</div>
+<div class="p-6 bg-primary-container text-on-primary-container border-primary rounded-xl flex gap-6 items-center">
+<span class="material-symbols-outlined">sync</span>
+<p class="font-bold font-label-md uppercase tracking-widest">Repetir ciclo</p>
+</div>
+</div>
+</section>
+<hr class="border-outline-variant my-12"/>
+<section class="scroll-mt-20 mb-16" id="teoria">
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-6">Teoría de Scrum</h2>
+<p class="font-body-md text-body-md mb-8">Scrum se basa en el <strong>empirismo</strong> y el <strong>pensamiento Lean</strong>. El empirismo afirma que el conocimiento proviene de la experiencia y de la toma de decisiones con base en lo observado.</p>
+<div class="grid md:grid-cols-3 gap-6">
+<div class="p-6 border-l-4 border-tertiary bg-tertiary-fixed/10">
+<h3 class="font-headline-sm text-headline-sm mb-2">Transparencia</h3>
+<p class="text-body-md text-on-surface-variant">El proceso y el trabajo emergentes deben ser visibles para quienes realizan el trabajo y para quienes lo reciben.</p>
+</div>
+<div class="p-6 border-l-4 border-tertiary bg-tertiary-fixed/10">
+<h3 class="font-headline-sm text-headline-sm mb-2">Inspección</h3>
+<p class="text-body-md text-on-surface-variant">Los artefactos de Scrum y el progreso hacia los objetivos acordados deben inspeccionarse con frecuencia.</p>
+</div>
+<div class="p-6 border-l-4 border-tertiary bg-tertiary-fixed/10">
+<h3 class="font-headline-sm text-headline-sm mb-2">Adaptación</h3>
+<p class="text-body-md text-on-surface-variant">Si algún aspecto de un proceso se desvía fuera de los límites, debe ajustarse lo antes posible.</p>
+</div>
+</div>
+</section>
+<section class="scroll-mt-20 mb-16 p-8 bg-surface-container-highest rounded-2xl" id="valores">
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-8 text-center">Valores de Scrum</h2>
+<ul class="grid md:grid-cols-2 lg:grid-cols-5 gap-4 list-none p-0">
+<li class="flex flex-col items-center text-center p-4">
+<span class="material-symbols-outlined text-primary text-4xl mb-3">handshake</span>
+<span class="font-bold font-label-md">Compromiso</span>
+</li>
+<li class="flex flex-col items-center text-center p-4">
+<span class="material-symbols-outlined text-primary text-4xl mb-3">center_focus_strong</span>
+<span class="font-bold font-label-md">Foco</span>
+</li>
+<li class="flex flex-col items-center text-center p-4">
+<span class="material-symbols-outlined text-primary text-4xl mb-3">forum</span>
+<span class="font-bold font-label-md">Franqueza</span>
+</li>
+<li class="flex flex-col items-center text-center p-4">
+<span class="material-symbols-outlined text-primary text-4xl mb-3">groups</span>
+<span class="font-bold font-label-md">Respeto</span>
+</li>
+<li class="flex flex-col items-center text-center p-4">
+<span class="material-symbols-outlined text-primary text-4xl mb-3">bolt</span>
+<span class="font-bold font-label-md">Coraje</span>
+</li>
+</ul>
+</section>
+<section class="scroll-mt-20 mb-16" id="equipo">
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-6">El Scrum Team</h2>
+<p class="font-body-md text-body-md mb-8">Pequeño equipo de personas: <span class="terminology-tag relative cursor-pointer font-code-sm text-code-sm bg-surface-variant px-2 py-1 rounded inline-flex items-center gap-1 group">Scrum Master <span class="material-symbols-outlined text-sm opacity-0 group-hover:opacity-100 transition-opacity">content_copy</span></span>, <span class="terminology-tag relative cursor-pointer font-code-sm text-code-sm bg-surface-variant px-2 py-1 rounded inline-flex items-center gap-1 group">Product Owner <span class="material-symbols-outlined text-sm opacity-0 group-hover:opacity-100 transition-opacity">content_copy</span></span> y <span class="terminology-tag relative cursor-pointer font-code-sm text-code-sm bg-surface-variant px-2 py-1 rounded inline-flex items-center gap-1 group">Developers <span class="material-symbols-outlined text-sm opacity-0 group-hover:opacity-100 transition-opacity">content_copy</span></span>.</p>
+<div class="space-y-8">
+<div class="flex gap-6 items-start">
+<div class="w-12 h-12 bg-primary rounded-full flex-shrink-0 flex items-center justify-center text-white">
+<span class="material-symbols-outlined">engineering</span>
+</div>
+<div>
+<h3 class="font-headline-sm text-headline-sm mb-1">Developers</h3>
+<p class="text-on-surface-variant">Comprometidos a crear cualquier aspecto de un Increment utilizable en cada Sprint.</p>
+</div>
+</div>
+<div class="flex gap-6 items-start">
+<div class="w-12 h-12 bg-primary rounded-full flex-shrink-0 flex items-center justify-center text-white">
+<span class="material-symbols-outlined">assignment_ind</span>
+</div>
+<div>
+<h3 class="font-headline-sm text-headline-sm mb-1">Product Owner</h3>
+<p class="text-on-surface-variant">Responsable de maximizar el valor del producto resultante del trabajo del Scrum Team.</p>
+</div>
+</div>
+<div class="flex gap-6 items-start">
+<div class="w-12 h-12 bg-primary rounded-full flex-shrink-0 flex items-center justify-center text-white">
+<span class="material-symbols-outlined">shield_person</span>
+</div>
+<div>
+<h3 class="font-headline-sm text-headline-sm mb-1">Scrum Master</h3>
+<p class="text-on-surface-variant">Verdadero líder servidor que asegura que todos los eventos sean positivos y productivos.</p>
+</div>
+</div>
+</div>
+</section>
+<section class="scroll-mt-20 mb-16" id="eventos">
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-6">Eventos de Scrum</h2>
+<div class="overflow-x-auto">
+<table class="w-full border-collapse">
+<thead>
+<tr class="border-b-2 border-primary text-left">
+<th class="py-4 px-4 font-label-md text-label-md text-primary uppercase tracking-widest">Evento</th>
+<th class="py-4 px-4 font-label-md text-label-md text-primary uppercase tracking-widest">Duración (Sprint 1m)</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant">
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="py-4 px-4 font-bold">El Sprint</td>
+<td class="py-4 px-4">≤ 1 mes</td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="py-4 px-4 font-bold">Sprint Planning</td>
+<td class="py-4 px-4">≤ 8 horas</td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="py-4 px-4 font-bold">Daily Scrum</td>
+<td class="py-4 px-4">15 minutos diarios</td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="py-4 px-4 font-bold">Sprint Review</td>
+<td class="py-4 px-4">≤ 4 horas</td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="py-4 px-4 font-bold">Sprint Retrospective</td>
+<td class="py-4 px-4">≤ 3 horas</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section class="scroll-mt-20 mb-16" id="artefactos">
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-6">Artefactos de Scrum</h2>
+<div class="grid gap-6">
+<div class="p-6 bg-surface-bright border border-outline rounded-xl">
+<h3 class="font-headline-sm text-headline-sm mb-2 text-primary">Product Backlog</h3>
+<p class="text-body-md mb-2"><strong>Compromiso:</strong> Objetivo del Producto.</p>
+<p class="text-sm text-on-surface-variant italic">El estado futuro del producto que sirve como objetivo para el Scrum Team.</p>
+</div>
+<div class="p-6 bg-surface-bright border border-outline rounded-xl">
+<h3 class="font-headline-sm text-headline-sm mb-2 text-primary">Sprint Backlog</h3>
+<p class="text-body-md mb-2"><strong>Compromiso:</strong> Objetivo del Sprint.</p>
+<p class="text-sm text-on-surface-variant italic">El porqué, el qué y el cómo del Sprint actual.</p>
+</div>
+<div class="p-6 bg-surface-bright border border-outline rounded-xl">
+<h3 class="font-headline-sm text-headline-sm mb-2 text-primary">Increment</h3>
+<p class="text-body-md mb-2"><strong>Compromiso:</strong> Definición de Terminado.</p>
+<p class="text-sm text-on-surface-variant italic">Un peldaño concreto hacia el Objetivo del Producto.</p>
+</div>
+</div>
+</section>
+<section class="scroll-mt-20 mb-16" id="cambios">
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-6">Cambios Guía Scrum 2017 → 2020</h2>
+<ul class="space-y-4 list-none p-0">
+<li class="flex items-center gap-4 p-4 bg-secondary-container/10 border-l-4 border-secondary rounded-r-lg">
+<span class="material-symbols-outlined text-secondary">check_circle</span>
+<span>Aún menos prescriptiva (eliminación de preguntas del Daily, etc).</span>
+</li>
+<li class="flex items-center gap-4 p-4 bg-secondary-container/10 border-l-4 border-secondary rounded-r-lg">
+<span class="material-symbols-outlined text-secondary">check_circle</span>
+<span>Un equipo, un producto (eliminación de sub-equipos).</span>
+</li>
+<li class="flex items-center gap-4 p-4 bg-secondary-container/10 border-l-4 border-secondary rounded-r-lg">
+<span class="material-symbols-outlined text-secondary">check_circle</span>
+<span>Introducción formal del <strong>Objetivo del Producto</strong>.</span>
+</li>
+<li class="flex items-center gap-4 p-4 bg-secondary-container/10 border-l-4 border-secondary rounded-r-lg">
+<span class="material-symbols-outlined text-secondary">check_circle</span>
+<span><strong>Autogestión</strong> reemplaza a la autoorganización.</span>
+</li>
+<li class="flex items-center gap-4 p-4 bg-secondary-container/10 border-l-4 border-secondary rounded-r-lg">
+<span class="material-symbols-outlined text-secondary">check_circle</span>
+<span>Tres temas en Sprint Planning (Por qué, Qué, Cómo).</span>
+</li>
+</ul>
+</section>
+<div class="flex justify-center py-12 no-print">
+<button class="flex items-center gap-2 px-6 py-3 bg-primary text-on-primary font-bold rounded-lg hover:shadow-lg transition-all" onclick="window.print()">
+<span class="material-symbols-outlined">print</span>
+                        Imprimir Guía de Referencia
+                    </button>
+</div>
+</article>
+</main>
+
+<aside class="hidden xl:block sticky top-16 h-[calc(100vh-64px)] w-72 overflow-y-auto no-print py-12 pl-4">
+<div class="space-y-8">
+<section class="bg-surface-container rounded-xl p-5 border border-outline-variant shadow-sm">
+<h4 class="font-label-md text-label-md text-on-surface font-bold mb-4 uppercase flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">event_note</span>
+                        Resumen Tiempos
+                    </h4>
+<ul class="text-sm space-y-2">
+<li class="flex justify-between border-b border-outline-variant/30 pb-1"><span>Sprint</span> <span class="font-bold">≤ 1m</span></li>
+<li class="flex justify-between border-b border-outline-variant/30 pb-1"><span>Planning</span> <span class="font-bold">≤ 8h</span></li>
+<li class="flex justify-between border-b border-outline-variant/30 pb-1"><span>Daily</span> <span class="font-bold">15m</span></li>
+<li class="flex justify-between border-b border-outline-variant/30 pb-1"><span>Review</span> <span class="font-bold">≤ 4h</span></li>
+<li class="flex justify-between"><span>Retro</span> <span class="font-bold">≤ 3h</span></li>
+</ul>
+</section>
+<section class="bg-surface-container rounded-xl p-5 border border-outline-variant shadow-sm">
+<h4 class="font-label-md text-label-md text-on-surface font-bold mb-4 uppercase flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">person_search</span>
+                        Roles Clave
+                    </h4>
+<div class="space-y-2">
+<div class="text-sm px-3 py-1 bg-surface-container-highest rounded border border-outline-variant">Developers</div>
+<div class="text-sm px-3 py-1 bg-surface-container-highest rounded border border-outline-variant">Product Owner</div>
+<div class="text-sm px-3 py-1 bg-surface-container-highest rounded border border-outline-variant">Scrum Master</div>
+</div>
+</section>
+<div class="p-5 border-2 border-dashed border-outline-variant rounded-xl text-center">
+<p class="text-sm text-on-surface-variant mb-4 italic">¿Necesitas la guía completa en PDF?</p>
+<a class="text-primary font-bold hover:underline" href="#">Descargar PDF Oficial</a>
+</div>
+</div>
+</aside>
+</div>
+
+<button class="fixed bottom-8 right-8 w-12 h-12 bg-primary text-on-primary rounded-full shadow-lg opacity-0 transition-opacity duration-300 flex items-center justify-center hover:scale-110 active:scale-95 no-print" id="backToTop">
+<span class="material-symbols-outlined">arrow_upward</span>
+</button>
+
+<footer class="bg-surface-container dark:bg-surface-container-lowest full-width border-t border-outline-variant dark:border-outline no-print">
+<div class="flex flex-col md:flex-row justify-between items-center px-gutter py-section-gap max-w-container-max-width mx-auto gap-gutter">
+<div class="flex flex-col gap-2">
+<span class="text-headline-sm font-headline-sm text-on-surface dark:text-on-primary-fixed">Modelo Scrum</span>
+<p class="text-on-surface-variant dark:text-surface-variant font-body-md text-body-md">Modelo Scrum © 2024. Last updated: October 2024.</p>
+</div>
+<nav class="flex gap-6">
+<a class="text-on-surface-variant dark:text-surface-variant font-label-md text-label-md hover:underline text-primary dark:hover:text-primary-fixed transition-opacity" href="#">Privacidad</a>
+<a class="text-on-surface-variant dark:text-surface-variant font-label-md text-label-md hover:underline text-primary dark:hover:text-primary-fixed transition-opacity" href="#">Términos</a>
+<a class="text-on-surface-variant dark:text-surface-variant font-label-md text-label-md hover:underline text-primary dark:hover:text-primary-fixed transition-opacity" href="#">Versión PDF</a>
+</nav>
+</div>
+</footer>
+<script>
+        // Back to top functionality
+        const backToTopBtn = document.getElementById('backToTop');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 500) {
+                backToTopBtn.classList.remove('opacity-0');
+                backToTopBtn.classList.add('opacity-100');
+            } else {
+                backToTopBtn.classList.add('opacity-0');
+                backToTopBtn.classList.remove('opacity-100');
+            }
+        });
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Copy terminology tags to clipboard
+        document.querySelectorAll('.terminology-tag').forEach(tag => {
+            tag.addEventListener('click', function() {
+                const text = this.textContent.trim().split(' ')[0];
+                navigator.clipboard.writeText(text);
+                const originalContent = this.innerHTML;
+                this.innerHTML = '¡Copiado!';
+                setTimeout(() => {
+                    this.innerHTML = originalContent;
+                }, 1000);
+            });
+        });
+
+        // Active section tracking for Sidebar
+        const sections = document.querySelectorAll('section');
+        const navItems = document.querySelectorAll('.nav-item');
+
+        window.addEventListener('scroll', () => {
+            let current = "";
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (window.scrollY >= (sectionTop - 150)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navItems.forEach(item => {
+                item.classList.remove('font-bold', 'text-primary', 'dark:text-primary-fixed', 'border-l-4', 'bg-surface-container-low', 'dark:bg-surface-container-high', 'pl-3');
+                item.classList.add('text-on-surface-variant', 'dark:text-surface-variant', 'pl-4');
+                
+                if (item.getAttribute('href').includes(current)) {
+                    item.classList.add('font-bold', 'text-primary', 'dark:text-primary-fixed', 'border-l-4', 'border-primary', 'dark:border-primary-fixed', 'pl-3', 'bg-surface-container-low', 'dark:bg-surface-container-high');
+                    item.classList.remove('text-on-surface-variant', 'dark:text-surface-variant', 'pl-4');
+                }
+            });
+        });
+    </script>
+</body></html>
