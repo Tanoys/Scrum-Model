@@ -1,0 +1,16 @@
+@media print {
+    .no-print { display: none !important; }
+    .print-full-width { width: 100% !important; max-width: 100% !important; }
+}
+
+.scroll-mt-20 {
+    scroll-margin-top: 5rem;
+}
+
+.terminology-tag:hover .copy-icon {
+    opacity: 1;
+}
+
+.material-symbols-outlined {
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
